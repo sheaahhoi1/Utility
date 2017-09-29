@@ -1,0 +1,22 @@
+VMware搭建KMS服务器(VLMCSD)
+VMware/Oracle VM VirtualBox一樣得
+VLMCSD发布主页：http://forums.mydigitallife.info/threads/50234、
+
+需要且仅需要
+
+ https://github.com/Wind4/vlmcsd/blob/master/floppy/floppy144.vfd
+
+仅需要其中的floppy144.flp
+
+新建Linux虚拟机，硬件仅保留内存（最小14MB，推荐16MB,更少是不能啟動,更多會快速回應）、处理器（1个1核心）、软盘（指向floppy144.flp）、网络适配器（桥接模式）、显示卡(1MB都算大)
+
+
+
+slmgr.vbs -upk
+slmgr.vbs -ipk DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ
+slmgr.vbs -skms "vfd碟內IP位址"
+slmgr.vbs -ato 
+slmgr.vbs -dlv
+=========
+
+由於IP無法固定所以必須用橋接模式,floppy144.vfd碟內KMS會提供IP位址
