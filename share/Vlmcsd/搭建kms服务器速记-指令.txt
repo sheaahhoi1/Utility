@@ -1,0 +1,19 @@
+如果不能設定定時工作CMD,有什麼方法取代?
+利用Windows&Office的指令引導目標KMS
+
+指令篇
+
+
+2、激活Windows。（以管理员身份运行cmd）
+
+slmgr /ipk KEY    #导入对应版本的 Windows 序列号
+slmgr /skms ADDR[:PORT]    #指定 KMS 服务器地址，购买的序列号忽略这条命令
+slmgr /ato    #激活
+slmgr -dlv        #查看激活状态
+
+3、激活Office，先进入Office的安装目录，例如：C:\Program Files\Microsoft Office\Office15，然后执行下面的命令。（以管理员身份运行cmd）
+
+cscript ospp.vbs /inpkey:KEY    #导入序列号
+cscript ospp.vbs /sethst:ADDR    #指定 KMS 服务器地址
+cscript ospp.vbs /act    #激活
+cscript  ospp.vbs  /dstatus        #查看激活状态
