@@ -1,0 +1,61 @@
+SOUND Blaster X-Fi MB5 on Realtek HD(UPDATED)
+
+Step 1: Before uninstalling the realtek drivers, follow these steps:
+*Press WinKey + R and type Gpedit.msc 
+Navigate to User Configuration>Administrative Templates>System>Drivers Installation
+Double click on Code Signing for Device Drivers and select enable.
+if a windows appears asking for a restart ignore that.
+
+*Navigate back to Computer Configuration>Administrative Templates>System>Internet communication management>Internet communication settings
+Double click on turn off windows update device driver searching and select enable
+
+*go to system>advanced system settings>hardware>device installation settings and set it to no
+
+-------------------------------------------------- -----------------------------------------------------------------------------------
+Step 2:
+*go to control panel>Device manager> sound,video and game controllers>Right click on Realtek High Defination Audio and select properties.
+Select the details tab and select Hardware IDS from property options.
+copy all the values and save it somewhere for later use.
+
+*For 32bit windows: go to where you extracted the files\1.Audio Driver\Vista
+look for "HDARt.inf" and right click>open , press CTRL+F and look for "AzaliaManufacturerID.NTX86.6.0"
+you will find 3 lines under that. you need to replace the hardware ids with your owns
+*for 64bit windows: go to where you extracted the files\1.Audio Driver\Vista64
+look for "HDXRT.inf" and right click>open , press CTRL+F and look for "AzaliaManufacturerID.NTamd64.6.0"
+you will find 3 lines under that. you need to replace the hardware ids with your owns
+-------------------------------------------------------------------------------------------------------------------------------------
+Step 3: Uninstall the Realtek HD Audio Driver that have been installed and don't restart.
+-> After uninstalling, go to folder:
+"C:\Windows\inf" and and look for "hdaudio.inf" and delete that file. If you can't delete the file just take ownership of the file first.
+-> Open the Driver-Clean.reg and select yes.
+-------------------------------------------------- -------------------------------------------------- ---------------------------------
+Step 4:Open cmd as administrator and type the following: 
+Windows 7: bcdedit -set TESTSIGNING ON
+Windows 8/8.1/10: bcdedit -set loadoptions DISABLE_INTEGRITY_CHECKS
+				  bcdedit -set TESTSIGNING ON
+Remember to Turn off secure boot in yours bios or "bcdedit -set TESTSIGNING ON" won't work.
+
+*you have to restart your computer by holding down the Shift key and clicking on Restart in Start menu. A menu will appear. You should 
+choose Troubleshoot, then Advanced settings, then Startup Settings. Restart, then press 7 in the menu that appears to turn off driver 
+signature enforcement. This only applies to the ongoing Windows session. If you need to reinstall the driver later, you have to do 
+the same thing again.			  
+-------------------------------------------------- -------------------------------------------------- ---------------------------------
+Step 5: *disable any anti-virus or it will alarm a false positive 
+*go to folder 1.Audio Driver and install modded audio driver using setup.exe , don't restart.
+*navigate to 2.MB5 V.1.00.14 folder and install MB5 using setup.exe, don't restart.
+*go to 3.Activator folder and 
+								1.double click on "1.-GenKGA4.exe" and click on the "iniciar(start)" button
+								2.extract "2.-GenKGA3.exe.7z" and double click on "2.-GenKGA3.exe", this will generate 35 files. Copy all 35 
+								files to "C:\Program Data\Creative\SoftwareLock" and select replace if asked.
+								3.open "3.-DAT.exe" and click on the "iniciar(start)" button, select replace if asked.
+								4.open "4.-NEWKGA.exe" and click on the "iniciar(start)" button, select replace if asked.
+								5.finally run "5.-RUN.BAT", this will clean the 35 files we generated earlier.
+								ps. sequence must be followed here
+								
+-------------------------------------------------- -------------------------------------------------- --------------------------------
+Step 6: Open cmd as administrator and type:
+Windows 7: bcdedit -set TESTSIGNING OFF
+Windows 8/8.1/10:	bcdedit -set loadoptions DISABLE_INTEGRITY_CHECKS
+					bcdedit -set TESTSIGNING OFF
+  
+Restart and enjoy.

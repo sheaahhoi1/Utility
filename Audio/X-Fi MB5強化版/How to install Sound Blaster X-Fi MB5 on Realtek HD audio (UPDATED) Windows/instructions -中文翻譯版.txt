@@ -1,0 +1,105 @@
+﻿SOUND Blaster X-Fi MB5 on Realtek HD(UPDATED)
+翻譯所以只有最重要是使用要的是正確內容
+----------
+第1步
+WinKey + R 輸入Gpedit.msc 
+1.電腦設定>管理模板>系統> 網絡通信管理> 網絡通信設置
+關閉Windows update裝置驅動驅動搜尋>啟用
+
+2.使用者設定>管理模板>系統>驅動程序安裝
+裝置驅動程序的程式碼簽署>啟用。
+如果出現要求重啟的窗口，請忽略它。
+
+*進入系統>高級系統設置>硬件>設備安裝設置並將其設置為no
+(即是開啟裝置管理員)
+-------------------------------------------------- -----------------------------------------------------------------------------------
+第2步(改驅動-這個步驟只需要做1次)：
+
+*電腦名稱下>聲音，視頻和遊戲控制器>右鍵單擊Realtek High Defination Audio並選擇屬性。
+詳細資料>選項>硬件識別碼。
+複製所有值並將其保存在某處以備將來使用。
+
+SAMSUNG 550P5C NB:
+HDAUDIO\FUNC_01&VEN_10EC&DEV_0269&SUBSYS_144DC0D1&REV_1002
+HDAUDIO\FUNC_01&VEN_10EC&DEV_0269&SUBSYS_144DC0D1
+
+※※※※:這步驟下文更改為不需要替換,只要添加,這是因為Realtek官方原版驅動都是帶有多個硬件識別碼
+
+
+*對於32位窗口：轉到解壓縮文件的位置\ 1.Audio Driver \ Vista
+查找“HDARt.inf”並右鍵單擊>打開，按CTRL + F並查找“AzaliaManufacturerID.NTX86.6.0”
+你會發現3條線。 你需要用自己的硬件替換硬件ID>儲存
+
+*對於64位窗口：轉到解壓縮文件的位置\ 1.Audio Driver \ Vista64
+查找“HDXRT.inf”並右鍵單擊>打開，按CTRL + F並查找“AzaliaManufacturerID.NTamd64.6.0”
+你會發現3條線。 你需要用自己的硬件替換硬件ID>儲存
+
+-------------------------------------------------------------------------------------------------------------------------------------
+步驟3：卸載已安裝且不重啟的Realtek HD Audio Driver。
+- >卸載後，轉到文件夾：
+“C:\Windows\inf”並查找“hdaudio.inf”並刪除該文件。 如果您無法刪除該文件，請先獲取該文件的所有權。
+在Take Ownership(取得所有權限)>使用Install Take Ownership.reg右鍵先按"Take Ownership"後再次刪除“hdaudio.inf”,
+由於這是提權操作建議之後立即使用Uninstall Take Ownership.reg
+
+- >打開Driver-Clean.reg並選並刪除擇yes。
+-------------------------------------------------- -------------------------------------------------- ---------------------------------
+步驟4：以管理員身份打開cmd並鍵入以下內容：
+Windows 7: 
+bcdedit -set TESTSIGNING ON
+
+Windows 8/8.1/10: 
+bcdedit -set loadoptions DISABLE_INTEGRITY_CHECKS
+bcdedit -set TESTSIGNING ON
+
+請記住在您的BIOS中關閉安全啟動或“bcdedit -set TESTSIGNING ON”將無效。
+
+※※※※:重開前有補充(看圖)
+
+*您必須通過“開始”菜單中的並按住Shift鍵+單擊“重新啟動”來重新啟動計算機。 將出現一個菜單。 你應該
+選擇疑難解答，然後選擇高級設置，然後選擇啟動設置。 重新啟動，然後在出現的菜單中按7關閉驅動程序
+簽名執行。 這僅適用於正在進行的Windows會話。 如果以後需要重新安裝驅動程序，則必須這樣做
+同樣的事情。
+(簡單來說“開始”菜單>按住Shift鍵+單擊“重新啟動”>排除疑難>高級設置
+>俗稱:安全模式的"進階啟動">reload後>按7/F7關閉驅動程序簽名執行)
+
+-------------------------------------------------- -------------------------------------------------- ---------------------------------
+第5步：*禁用任何防病毒軟件，否則會報警誤報
+*1.Audio驅動程序並使用setup.exe安裝修改的音頻驅動程序，不要重新啟動。
+※※※※:如圖補充,如果沒有WIN警告無法驗証驅動程式,就要手動按住Shift鍵"重新啟動",
+再進來安裝,Realtek官方驅動本身就自帶移除功能,不乾淨程式內部就會優先移除驅動再需要重新啟動重新安裝=.=
+
+
+*2.MB5 V.1.00.14文件夾並使用setup.exe安裝MB5，不要重啟。
+*3.Activator文件夾跳過下面步驟,直接執行[all in 1]X-3.Activator.exe之後去第6步驟
+
+3.Activator文件夾和
+1.雙擊“1.-GenKGA4.exe”&“iniciar(start)”按鈕
+2.extract“2.-GenKGA3.exe.7z”並雙擊“2.-GenKGA3.exe”，這將生成35個文件。 全部複製35
+文件到“C:\ProgramData\Creative\SoftwareLock”並在詢問時選擇替換。
+3.打開“3.-DAT.exe”並單擊“iniciar(start)”按鈕，如果詢問則選擇替換。
+4.打開“4.-NEWKGA.exe”並單擊“iniciar(start)”按鈕，如果詢問則選擇替換。
+5.最終運行“5.-RUN.BAT”，這將清除我們之前生成的35個文件。
+PS。 這裡必須遵循順序
+-------------------------------------------------- -------------------------------------------------- --------------------------------
+步驟6：以管理員身份打開cmd並鍵入：
+Windows 7:
+bcdedit -set TESTSIGNING OFF
+Windows 8/8.1/10:
+bcdedit -set loadoptions DISABLE_INTEGRITY_CHECKS
+bcdedit -set TESTSIGNING OFF
+?
+重啟並享用.
+===========
+安裝後總結
+1.hdaudio是有兄弟1個叫"hdaudio.inf"1個叫"hdaudio.PNF",可能誤刪除"hdaudio.PNF"那就無效
+2.步驟4補充部份好像必做
+3.如果是已裝過的系統建議重啟1次,再進行控制器驅動移除等先,之後再進入關閉驅動程序簽名模式
+4.關閉防毒MS的防毒種微電腦會"甦醒",如果需要步驟5要繼續關閉,卡巴斯基進入設定關閉會永久關閉
+5.Activator文件夾直接運行[all in 1]X-3.Activator.exe,已校驗過MD5碼一致性
+6.收尾
+bcdedit -set loadoptions DISABLE_INTEGRITY_CHECKS
+bcdedit -set TESTSIGNING OFF
+Uninstall Take Ownership.reg(不過好像使用都沒改回,只是刪除右鍵中"Take Ownership"項目)
+
+
+
